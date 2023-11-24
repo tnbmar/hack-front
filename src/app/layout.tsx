@@ -2,7 +2,7 @@ import GlobalStyle from "@/libs/global-styles";
 import StyledComponentsRegistry from "@/libs/ssc-reg";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { MainLayout } from "./layout.styled";
+import { Content, MainLayout } from "./layout.styled";
 import { Theme } from "@radix-ui/themes";
 import NavBar from "@/components/NavBar";
 
@@ -23,7 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Theme key={"asdasd"}>
             <MainLayout>
               <NavBar />
-              {children}
+
+              <Content>{children}</Content>
             </MainLayout>
           </Theme>
         </body>

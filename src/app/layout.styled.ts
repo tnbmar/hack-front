@@ -7,3 +7,7 @@ export const MainLayout = styled.main`
   display: grid;
   grid-template-columns: 200px 1fr;
 `;
+
+export const Content = styled.div`
+  padding: 20px;
+`;

@@ -26,3 +26,13 @@ export type Module = {
   question_count: number;
   answered_count: number;
 };
+
+type LessonType = "code" | "eng" | "eco";
+
+export type Lesson = {
+  title: string;
+  id: number;
+  question_count: number;
+  answered_count: number;
+  lesson_type: LessonType;
+};
