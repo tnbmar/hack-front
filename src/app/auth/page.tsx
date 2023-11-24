@@ -8,22 +8,38 @@ import { LoginDto, RegistrationDto } from "@/types";
 import { login, registration } from "@/api";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
+import Cookies from "js-cookie";
+import COOKIES from "@/constants/cookie";
+import { useAppStore } from "@/store";
 
 const AuthPage = () => {
   const { register, handleSubmit } = useForm<RegistrationDto>();
   const router = useRouter();
+  const store = useAppStore();
 
   const { register: registerLoginForm, handleSubmit: handleSubmitLogin } =
     useForm<LoginDto>();
 
   const handleRegistration = handleSubmit(async (data) => {
-    // const regResp = await registration(data);
-    router.push(PAGES.MAIN);
+    try {
+      const regResp = await registration(data);
+      Cookies.set(COOKIES.TOKEN, regResp.token);
+      router.push(PAGES.MAIN);
+      store.setUser(regResp.user);
+    } catch (e) {
+      console.log({ e });
+    }
   });
 
   const handleLogin = handleSubmitLogin(async (data) => {
-    // const loginResp = await login(data);
-    router.push(PAGES.MAIN);
+    try {
+      const loginResp = await login(data);
+      Cookies.set(COOKIES.TOKEN, loginResp.token);
+      router.push(PAGES.MAIN);
+      store.setUser(loginResp.user);
+    } catch (e) {
+      console.log({ e });
+    }
   });
 
   return (

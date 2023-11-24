@@ -26,14 +26,12 @@ const CodeQuestion = () => {
     <Flex direction={"column"} gap={"3"} height={"100%"}>
       <Heading size={"7"}>Допиши код, чтобы он скомпилировался!</Heading>
 
-      <div style={{ flexGrow: 1 }}>
-        <CodeMirror
-          value={value}
-          height="400px"
-          extensions={[javascript({ jsx: true })]}
-          onChange={onChange}
-        />
-      </div>
+      <CodeMirror
+        value={value}
+        height="400px"
+        extensions={[javascript({ jsx: true })]}
+        onChange={onChange}
+      />
 
       <Button onClick={handleCompile}>Скомпилировать</Button>
     </Flex>

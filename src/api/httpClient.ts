@@ -1,6 +1,8 @@
+import COOKIES from "@/constants/cookie";
 import axios, { AxiosRequestConfig } from "axios";
+import Cookies from "js-cookie";
 
-axios.defaults.baseURL = "http://192.168.1.47:3000/api/";
+axios.defaults.baseURL = "http://localhost:3003/api/";
 
 const httpClient = <T>({
   method = "GET",
@@ -16,6 +18,9 @@ const httpClient = <T>({
     params,
     headers: {
       ...headers,
+      Authorization: headers?.Authorization
+        ? headers?.Authorization
+        : Cookies.get(COOKIES.TOKEN),
     },
   });
 

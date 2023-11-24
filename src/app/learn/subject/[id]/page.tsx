@@ -1,34 +1,26 @@
 import { NextPage } from "next";
 import { Module } from "@/types";
-import ModuleCard from "../../components/ModuleCard";
 import { Flex } from "@radix-ui/themes";
+import ModuleCard from "../../components/ModuleCard";
+import { getModules } from "@/api/rest/modules";
+import { cookies } from "next/headers";
+import COOKIES from "@/constants/cookie";
 
-const MODULES_MOCK: Module[] = [
-  {
-    id: 1,
-    answered_count: 1,
-    question_count: 8,
-    title: "Модуль 1. Старт в уверенное будущее",
-  },
-  {
-    id: 2,
-    answered_count: 1,
-    question_count: 8,
-    title: "Модуль 2. Старт в уверенное будущее",
-  },
-  {
-    id: 3,
-    answered_count: 1,
-    question_count: 8,
-    title: "Модуль 3. Старт в уверенное будущее",
-  },
-];
+type ModulesPageProps = {
+  params: {
+    id: number;
+  };
+};
 
-const Modules: NextPage = () => {
+const Modules: NextPage<ModulesPageProps> = async (props) => {
+  const cookiesValues = cookies();
+  const token = cookiesValues.get(COOKIES.TOKEN);
+  const { data } = await getModules(props.params.id, token?.value ?? "");
+
   return (
     <>
       <Flex direction={"column"} gap={"3"}>
-        {MODULES_MOCK.map((module) => (
+        {data.map((module) => (
           <ModuleCard key={module.id} module={module} />
         ))}
       </Flex>
