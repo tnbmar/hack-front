@@ -7,14 +7,16 @@ import { useMemo, useState } from "react";
 import s from "./lesson.module.css";
 import WordDrop from "../../components/LanguageQuestion";
 import { Flex } from "@radix-ui/themes";
+import TrueAnswer from "../../components/TrueAnswer";
 
 const QUESTIONS_MOCK = [
   { value: "console.log(1)", type: "code" },
   { value: "Заполни конец", type: "lang" },
+  { value: "Заполни конец", type: "select" },
 ];
 
 const LessonPage = () => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(2);
 
   const currentQuestion = useMemo(
     () => QUESTIONS_MOCK[currentQuestionIndex],
@@ -37,6 +39,11 @@ const LessonPage = () => {
           string={currentQuestion.value}
           correctWord="asd"
           options={["фыв ф", "ыыыыы"]}
+        />
+      ) : currentQuestion.type === "select" ? (
+        <TrueAnswer
+          question="Сколько  сантиметров в дециметре?"
+          options={["asdasd", "asdasda", "asdasdasdasd"]}
         />
       ) : (
         <></>
