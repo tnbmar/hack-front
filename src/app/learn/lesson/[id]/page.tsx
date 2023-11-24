@@ -36,7 +36,7 @@ const LessonPage = () => {
         <WordDrop
           string={currentQuestion.value}
           correctWord="asd"
-          options={["моего хуя", "ыыыыы"]}
+          options={["фыв ф", "ыыыыы"]}
         />
       ) : (
         <></>
