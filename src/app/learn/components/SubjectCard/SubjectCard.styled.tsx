@@ -3,22 +3,29 @@
 import { Card, Flex } from "@radix-ui/themes";
 import styled from "styled-components";
 
-export const SubjectCardWrapper = styled.article`
+export const SubjectCardWrapper = styled(Flex)`
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
-
-  & > div {
-    display: grid;
-    grid-template-rows: 200px 150px;
-    padding: 0 !important;
-    height: 100% !important;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 150px;
+  height: 100% !important;
+  border-radius: 20px;
+  overflow: hidden;
 `;
 
 export const ImageContainer = styled.div`
   position: relative;
   height: 100%;
+
+  & > img {
+    object-fit: cover;
+  }
 `;
 
 export const InfoWrapper = styled(Flex)`
   padding: 20px;
+
+  & > button {
+    margin-top: auto;
+  }
 `;

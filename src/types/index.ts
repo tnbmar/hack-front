@@ -19,3 +19,10 @@ export type Subject = {
   description: string;
   bgImage: string;
 };
+
+export type Module = {
+  id: number;
+  title: string;
+  question_count: number;
+  answered_count: number;
+};

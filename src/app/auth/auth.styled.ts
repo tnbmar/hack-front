@@ -11,8 +11,8 @@ export const AuthWrapper = styled.div`
 `;
 
 export const BooksImage = styled.div`
-  width: 940px;
-  height: 705px;
+  width: 640px;
+  height: 505px;
   position: relative;
   bottom: 0;
   align-self: flex-end;
