@@ -24,9 +24,7 @@ const SubjectCard = ({ subject }: Props) => {
           <Heading>{subject.title}</Heading>
           <Text>{subject.description}</Text>
         </Flex>
-        <Button onClick={() => router.push(PAGES.SUBJECT(subject.id))}>
-          Начать обучение
-        </Button>
+        <Button onClick={() => router.push(PAGES.SUBJECT(subject.id))}>Начать обучение</Button>
       </InfoWrapper>
     </SubjectCardWrapper>
   );
