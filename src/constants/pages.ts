@@ -1,5 +1,8 @@
 const PAGES = {
   MAIN: "/",
   AUTH: "/auth",
-  PROFILE: (id: number) => `/profile${id}`,
+  PROFILE: "/profile",
+  LEARN: "/learn",
 } as const;
+
+export default PAGES;

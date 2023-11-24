@@ -1,6 +1,10 @@
+import GlobalStyle from "@/libs/global-styles";
 import StyledComponentsRegistry from "@/libs/ssc-reg";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { MainLayout } from "./layout.styled";
+import { Theme } from "@radix-ui/themes";
+import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +17,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <StyledComponentsRegistry>
-        <body className={inter.className}>{children}</body>
+        <GlobalStyle />
+
+        <body className={inter.className}>
+          <Theme key={"asdasd"}>
+            <MainLayout>
+              <NavBar />
+              {children}
+            </MainLayout>
+          </Theme>
+        </body>
       </StyledComponentsRegistry>
     </html>
   );

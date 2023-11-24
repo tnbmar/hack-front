@@ -1,29 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
+import React from "react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import extraScopePlugin from "stylis-plugin-extra-scope";
 
-export default function StyledComponentsRegistry({
+type Props = {
+  scope?: string;
+};
+
+const StyledComponentProvider: React.FC<PropsWithChildren<Props>> = ({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  // Only create stylesheet once with lazy initial state
-  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
+  scope,
+}) => {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
-    return <>{styles}</>;
+    return styles;
   });
 
-  if (typeof window !== "undefined") return <>{children}</>;
+  if (typeof window !== "undefined") return children;
+
+  const stylisPlugins = scope ? [extraScopePlugin(`#${scope}`)] : [];
 
   return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
+    <StyleSheetManager
+      stylisPlugins={stylisPlugins}
+      sheet={styledComponentsStyleSheet.instance}
+    >
       {children}
     </StyleSheetManager>
   );
-}
+};
+
+export default StyledComponentProvider;
