@@ -24,11 +24,9 @@ const LeassonCard = ({ lesson, counter }: LeassonCardProps) => {
 
       <TextWrapper direction={"column"}>
         <Text size={"7"} weight={"bold"}>
-          {lesson.title}
+          {lesson.name}
         </Text>
-        <Text>
-          Ваш результат: {lesson.answered_count}/{lesson.question_count}
-        </Text>
+        <Text>Ваш результат: 0/0</Text>
       </TextWrapper>
     </LessonCard>
   );

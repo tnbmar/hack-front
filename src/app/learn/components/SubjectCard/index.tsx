@@ -9,20 +9,21 @@ import PAGES from "@/constants/pages";
 
 type Props = {
   subject: Subject;
+  order: number;
 };
 
-const SubjectCard = ({ subject }: Props) => {
+const SubjectCard = ({ subject, order }: Props) => {
   const router = useRouter();
 
   return (
     <SubjectCardWrapper direction={"column"}>
       <ImageContainer>
-        <Image src={subject.bgImage} alt={subject.title} fill />
+        <Image src={`/subject-${order}.png`} alt={subject.name} fill />
       </ImageContainer>
       <InfoWrapper direction={"column"}>
         <Flex direction={"column"} gap={"1"}>
-          <Heading>{subject.title}</Heading>
-          <Text>{subject.description}</Text>
+          <Heading>{subject.name}</Heading>
+          <Text>Описание</Text>
         </Flex>
         <Button onClick={() => router.push(PAGES.SUBJECT(subject.id))}>
           Начать обучение

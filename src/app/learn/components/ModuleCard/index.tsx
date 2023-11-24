@@ -26,7 +26,7 @@ const ModuleCard = ({ module }: { module: Module }) => {
 
   return (
     <ModuleCardTemplate direction={"column"} gap={"3"}>
-      <Heading>{module.title}</Heading>
+      <Heading>{module.name}</Heading>
 
       <Flex align={"center"} gap={"3"}>
         <Progress.Root className={s.progressbar} value={progress}>
@@ -37,7 +37,8 @@ const ModuleCard = ({ module }: { module: Module }) => {
         </Progress.Root>
 
         <Text>
-          {module.answered_count}/{module.question_count}
+          0/8
+          {/* {module.answered_count}/{module.question_count} */}
         </Text>
       </Flex>
 
