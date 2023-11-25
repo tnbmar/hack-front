@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AuthForm, AuthWrapper, BooksImage } from "./auth.styled";
 import { Button, Flex, Heading, Tabs, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
-import { LoginDto, RegistrationDto } from "@/types";
+import { FullUser, LoginDto, RegistrationDto, User } from "@/types";
 import { login, registration } from "@/api";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
