@@ -2,7 +2,6 @@
 
 import { Text } from "@radix-ui/themes";
 import { NextPage } from "next";
-import Image from "next/image";
 import { Achievment, ProfileSubject, Subject } from "@/types";
 
 import {
@@ -11,20 +10,13 @@ import {
   Container,
   ModuleBLock,
   ProfileBlock,
-<<<<<<< HEAD
-  ProfileBlockAvatar,
-  ProfileContainer,
   SubjectsWrapper,
-=======
->>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
 } from "./auth.styled";
 import SubjectCard from "./Components/SubjectCard";
 import { useEffect, useState } from "react";
 import { getAchievments, getSubjects } from "@/api";
 import { useUser } from "@/providers/AuthProvider";
 import SubjectAchievment from "./Components/SubjectAchievment";
-<<<<<<< HEAD
-import { SubTitle } from "./Components/SubjectAchievment/SubjectAvhievment.styled";
 
 const MOCK: ProfileSubject[] = [
   {
@@ -46,6 +38,7 @@ const MOCK: ProfileSubject[] = [
 const ACHIEVE: Achievment[] = [
   {
     id: 1,
+    name: "New",
     title: "Добро пожаловать!",
     text: "Просто чтобы порадовать вас",
     status: true,
@@ -53,6 +46,7 @@ const ACHIEVE: Achievment[] = [
   },
   {
     id: 2,
+    name: "Reward",
     title: "Ваш первый успех!",
     text: "Поздравляем с прохождением первого модуля обучения",
     status: true,
@@ -60,6 +54,7 @@ const ACHIEVE: Achievment[] = [
   },
   {
     id: 3,
+    name: "Photo",
     title: "Вы фотомодель!",
     text: "Добавьте свое фото в профиль",
     status: false,
@@ -67,6 +62,7 @@ const ACHIEVE: Achievment[] = [
   },
   {
     id: 4,
+    name: "Most",
     title: "Самый умный!",
     text: "Ответьте на 15 вопросов",
     status: false,
@@ -74,15 +70,14 @@ const ACHIEVE: Achievment[] = [
   },
   {
     id: 5,
+    name: "King",
     title: "Король знаний",
     text: "Закончите изучение одного предмета",
     status: false,
     img: "/Achieve-5.png",
   },
 ];
-=======
 import dayjs from "dayjs";
->>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
 
 type Props = {
   params: {
@@ -107,44 +102,24 @@ const ProfilePage: NextPage<Props> = ({ params }) => {
   return (
     <Container>
       <div>
-<<<<<<< HEAD
-        <ProfileContainer>
-          <ProfileBlockAvatar>
-            <Image src="/Avatar.png" alt="user" width={200} height={200} style={{ borderRadius: "50%", margin: "" }} />
-          </ProfileBlockAvatar>
-          <ProfileBlock>
-            <AuthTittle>Привет, {profileId}! </AuthTittle>
-            <SubTitle>Регистрация: {profileId}</SubTitle>
-          </ProfileBlock>
-        </ProfileContainer>
-        <ModuleBLock>
-          <AuthTittle>Мои предметы</AuthTittle>
-          <SubjectsWrapper>
-            {MOCK.map((subject) => (
-              <SubjectCard subject={subject} key={subject.id} />
-            ))}
-          </SubjectsWrapper>
-        </ModuleBLock>
-      </div>
-      <AchievementBlock>
-        <AuthTittle style={{ textAlign: "center" }}> Мои достижения</AuthTittle>
-        {ACHIEVE.map((achieve) => (
-=======
         <ProfileBlock>
           <AuthTittle>Привет, {user.user.username}! </AuthTittle>
           <Text>Регистрация: {dayjs(user.user.createdAt).format("DD.MM.YYYY")}</Text>
         </ProfileBlock>
         <ModuleBLock>
           <AuthTittle>Мои предметы</AuthTittle>
-          {subjects &&
-            subjects.map((subject) => <SubjectCard subject={subject} key={subject.id} />)}
+          <SubjectsWrapper>
+            {subjects &&
+              subjects.map((subject) => (
+                <SubjectCard subject={subject} key={subject.id} />
+              ))}
+          </SubjectsWrapper>
         </ModuleBLock>
       </div>
       <AchievementBlock>
-        <AuthTittle> Мои достижения</AuthTittle>
-        {rewards.map((achieve) => (
->>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
-          <SubjectAchievment subject={achieve} key={achieve.id} />
+        <AuthTittle style={{ paddingLeft: "20px" }}> Мои достижения</AuthTittle>
+        {ACHIEVE.map((achieve) => (
+          <SubjectAchievment myRewards={rewards} subject={achieve} key={achieve.id} />
         ))}
       </AchievementBlock>
     </Container>

@@ -25,7 +25,8 @@ export const AchieveImageBLock = styled.div<{ status: boolean }>`
     object-fit: contain;
     width: 100%;
     height: 100%;
-    filter: ${(props) => (props.status ? "none" : "grayscale(100%)")}; /* Применяем фильтр для серого цвета */
+    filter: ${(props) =>
+      props.status ? "none" : "grayscale(100%)"}; /* Применяем фильтр для серого цвета */
   }
 `;
 export const Title = styled.h1`

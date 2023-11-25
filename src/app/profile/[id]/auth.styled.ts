@@ -38,7 +38,6 @@ export const ModuleBLock = styled.div`
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
 `;
 
-<<<<<<< HEAD
 export const SubjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,8 +102,6 @@ export const SubjectsWrapper = styled.div`
   }
 `;
 
-=======
->>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
 export const AchievementBlock = styled.div`
   border-radius: 30px;
   background: var(--white-background, #fff);
