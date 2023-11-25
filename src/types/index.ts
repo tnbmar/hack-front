@@ -96,6 +96,9 @@ export type Task = {
 export type Achievment = {
   id: number;
   name: string;
+  img: string;
+  title: string;
+  text: string;
 };
 
 export type ProfileSubject = {
