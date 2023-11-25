@@ -10,6 +10,7 @@ import {
   Container,
   ModuleBLock,
   ProfileBlock,
+  ProfileContent,
   SubjectsWrapper,
 } from "./auth.styled";
 import SubjectCard from "./Components/SubjectCard";
@@ -78,6 +79,7 @@ const ACHIEVE: Achievment[] = [
   },
 ];
 import dayjs from "dayjs";
+import Image from "next/image";
 
 type Props = {
   params: {
@@ -103,8 +105,17 @@ const ProfilePage: NextPage<Props> = ({ params }) => {
     <Container>
       <div>
         <ProfileBlock>
-          <AuthTittle>Привет, {user.user.username}! </AuthTittle>
-          <Text>Регистрация: {dayjs(user.user.createdAt).format("DD.MM.YYYY")}</Text>
+          <Image
+            src="/Avatar.png"
+            width={100}
+            height={100}
+            alt=""
+            style={{ borderRadius: "50%" }}
+          />
+          <ProfileContent>
+            <AuthTittle style={{ padding: 0 }}>Привет, {user.user.username}! </AuthTittle>
+            <Text>Регистрация: {dayjs(user.user.createdAt).format("DD.MM.YYYY")}</Text>
+          </ProfileContent>
         </ProfileBlock>
         <ModuleBLock>
           <AuthTittle>Мои предметы</AuthTittle>

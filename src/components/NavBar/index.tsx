@@ -17,6 +17,7 @@ const NavBar = () => {
         <Heading size={"5"}>TNBMAR</Heading>
         <Link href={PAGES.LEARN}>Обучение</Link>
         <Link href={PAGES.PROFILE(1)}>Профиль</Link>
+        <Link href={PAGES.TOPS}>Топ</Link>
       </Flex>
     </NavLayout>
   );

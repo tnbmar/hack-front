@@ -114,3 +114,13 @@ export type ProfileSubject = {
   id: number;
   bgImage: string;
 };
+
+export type Leader = {
+  createdAt: string;
+  email: string;
+  id: number;
+  password: string;
+  taskCount: number;
+  username: string;
+  answeredTasks: Answer[];
+};
