@@ -7,10 +7,13 @@ import { getSubjects } from "@/api";
 
 import { cookies } from "next/headers";
 import COOKIES from "@/constants/cookie";
+import { redirect } from "next/navigation";
+import PAGES from "@/constants/pages";
 
 const LearnPage: NextPage = async () => {
   const cookiesValues = cookies();
   const token = cookiesValues.get(COOKIES.TOKEN);
+  if (!token?.value) redirect(PAGES.AUTH);
   const { data } = await getSubjects(token?.value ?? "");
 
   return (

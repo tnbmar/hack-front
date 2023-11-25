@@ -19,17 +19,19 @@ export type Reward = {
 };
 
 export type FullUser = {
-  answeredLessons: Lesson[];
-  answeredModules: Module[];
-  answeredSubjects: Subject[];
-  answeredTasks: Task[];
-  createdAt: string;
-  email: string;
-  id: number;
-  password: string;
-  rewards: Reward[];
-  taskCount: number;
-  username: string;
+  user: {
+    answeredLessons: Lesson[];
+    answeredModules: Module[];
+    answeredSubjects: Subject[];
+    answeredTasks: Task[];
+    createdAt: string;
+    email: string;
+    id: number;
+    password: string;
+    rewards: Reward[];
+    taskCount: number;
+    username: string;
+  };
 };
 
 export type RegResp = {
@@ -47,6 +49,7 @@ export type LoginResp = RegResp;
 export type Subject = {
   id: number;
   name: string;
+  image: string;
 };
 
 export type Module = {
@@ -90,4 +93,15 @@ export type Task = {
   id: number;
   lesson_id: number;
   type: TaskType;
+};
+
+export type Achievment = {
+  id: number;
+  name: string;
+};
+
+export type ProfileSubject = {
+  tittle: string;
+  id: number;
+  bgImage: string;
 };

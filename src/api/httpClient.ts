@@ -2,7 +2,7 @@ import COOKIES from "@/constants/cookie";
 import axios, { AxiosRequestConfig } from "axios";
 import Cookies from "js-cookie";
 
-axios.defaults.baseURL = "http://localhost:3003/api/";
+axios.defaults.baseURL = "https://api.tnbmar.ru/api/";
 
 const httpClient = <T>({
   method = "GET",

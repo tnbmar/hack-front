@@ -18,14 +18,16 @@ const SubjectCard = ({ subject, order }: Props) => {
   return (
     <SubjectCardWrapper direction={"column"}>
       <ImageContainer>
-        <Image src={`/subject-${order}.png`} alt={subject.name} fill />
+        <Image src={subject.image} alt={subject.name} fill />
       </ImageContainer>
       <InfoWrapper direction={"column"}>
         <Flex direction={"column"} gap={"1"}>
           <Heading>{subject.name}</Heading>
           <Text>Описание</Text>
         </Flex>
-        <Button onClick={() => router.push(PAGES.SUBJECT(subject.id))}>Начать обучение</Button>
+        <Button onClick={() => router.push(PAGES.SUBJECT(subject.id))}>
+          Начать обучение
+        </Button>
       </InfoWrapper>
     </SubjectCardWrapper>
   );

@@ -11,11 +11,11 @@ export const SubjectCardWrapper = styled(Flex)`
   height: 100% !important;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
 `;
 
 export const ImageContainer = styled.div`
-  position: relative;
-  height: 100%;
+  /* height: 100%; */
 
   & > img {
     object-fit: cover;
