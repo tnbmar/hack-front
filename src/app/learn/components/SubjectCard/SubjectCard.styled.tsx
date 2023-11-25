@@ -11,6 +11,7 @@ export const SubjectCardWrapper = styled(Flex)`
   height: 100% !important;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
 `;
 
 export const ImageContainer = styled.div`

@@ -2,7 +2,7 @@
 const nextConfig = {
   compiler: { styledComponents: true },
   images: {
-    domains: ["i.ibb.co"],
+    domains: ["ibb.co"],
   },
 };
 
