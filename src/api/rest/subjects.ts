@@ -7,3 +7,9 @@ export const getSubjects = (authToken?: string) =>
     method: "GET",
     headers: { Authorization: authToken },
   });
+
+export const getSubject = (id: number, authToken?: string) =>
+  httpClient<{ subject: Subject }>({
+    url: `/subjects/${id}`,
+    headers: { Authorization: authToken },
+  });

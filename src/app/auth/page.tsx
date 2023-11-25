@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AuthForm, AuthWrapper, BooksImage } from "./auth.styled";
 import { Button, Flex, Heading, Tabs, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
-import { FullUser, LoginDto, RegistrationDto, User } from "@/types";
+import { LoginDto, RegistrationDto } from "@/types";
 import { login, registration } from "@/api";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
@@ -15,14 +15,14 @@ const AuthPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }, // Добавляем объект ошибок из react-hook-form
+    formState: { errors },
   } = useForm<RegistrationDto & { confirmPassword: string }>();
   const router = useRouter();
 
   const {
     register: registerLoginForm,
     handleSubmit: handleSubmitLogin,
-    formState: { errors: errorsLogin }, // Объект ошибок для формы входа
+    formState: { errors: errorsLogin },
   } = useForm<LoginDto>();
 
   const handleRegistration = handleSubmit(async (data) => {

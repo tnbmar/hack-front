@@ -1,10 +1,11 @@
 import { NextPage } from "next";
 import { Module } from "@/types";
-import { Flex } from "@radix-ui/themes";
+import { Flex, Heading } from "@radix-ui/themes";
 import ModuleCard from "../../components/ModuleCard";
 import { getModules } from "@/api/rest/modules";
 import { cookies } from "next/headers";
 import COOKIES from "@/constants/cookie";
+import { getSubject } from "@/api";
 
 type ModulesPageProps = {
   params: {
@@ -16,15 +17,17 @@ const Modules: NextPage<ModulesPageProps> = async (props) => {
   const cookiesValues = cookies();
   const token = cookiesValues.get(COOKIES.TOKEN);
   const { data } = await getModules(props.params.id, token?.value ?? "");
+  const { data: subjectsData } = await getSubject(props.params.id, token?.value ?? "");
 
   return (
-    <>
+    <Flex direction={"column"} gap={"3"}>
+      <Heading>{subjectsData.subject.name}</Heading>
       <Flex direction={"column"} gap={"3"}>
         {data.map((module) => (
           <ModuleCard key={module.id} module={module} />
         ))}
       </Flex>
-    </>
+    </Flex>
   );
 };
 

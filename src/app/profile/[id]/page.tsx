@@ -12,30 +12,9 @@ import {
   ProfileBLock,
 } from "./auth.styled";
 import SubjectCard from "./Components/SubjectCard";
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { getSubjects } from "@/api";
 import { useUser } from "@/providers/AuthProvider";
-=======
-
-const MOCK: Subject[] = [
-  {
-    name: "Английский язык",
-    id: 1,
-    // bgImage: "/subject-1.png",
-  },
-  {
-    name: "Программирование",
-    id: 2,
-    // bgImage: "/subject-2.png",
-  },
-  {
-    name: "Экология",
-    id: 3,
-    // bgImage: "/subject-3.png",
-  },
-];
->>>>>>> c1716733286b432297523fb3812ae692f10104da
 
 type Props = {
   params: {
