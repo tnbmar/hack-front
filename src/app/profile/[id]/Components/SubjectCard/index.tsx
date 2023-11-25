@@ -1,7 +1,12 @@
 "use client";
 
 import { Subject } from "@/types";
-import { ImageContainer, InfoWrapper, StyledButton, SubjectCardWrapper } from "./SubjectCard.styled";
+import {
+  ImageContainer,
+  InfoWrapper,
+  StyledButton,
+  SubjectCardWrapper,
+} from "./SubjectCard.styled";
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import * as Progress from "@radix-ui/react-progress";
@@ -21,14 +26,19 @@ const SubjectCard = ({ subject }: Props) => {
   return (
     <SubjectCardWrapper direction={"row"}>
       <ImageContainer>
-        <Image src={subject.bgImage} alt={subject.title} fill />
+        {/* <Image src={subject.bgImage} alt={subject.title} fill /> */}
       </ImageContainer>
       <InfoWrapper>
-        <Heading>{subject.title}</Heading>
+        <Heading>англ</Heading>
         <Progress.Root className={s.progressbar} value={progress}>
-          <Progress.Indicator className={s.progressbar__indicator} style={{ width: `${100 - progress}%` }} />
+          <Progress.Indicator
+            className={s.progressbar__indicator}
+            style={{ width: `${100 - progress}%` }}
+          />
         </Progress.Root>
-        <StyledButton onClick={() => router.push(PAGES.SUBJECT(subject.id))}>Начать обучение</StyledButton>
+        <StyledButton onClick={() => router.push(PAGES.SUBJECT(subject.id))}>
+          Начать обучение
+        </StyledButton>
       </InfoWrapper>
     </SubjectCardWrapper>
   );

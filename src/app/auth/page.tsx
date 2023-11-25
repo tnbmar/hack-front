@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AuthForm, AuthWrapper, BooksImage } from "./auth.styled";
 import { Button, Flex, Heading, Tabs, TextField } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
-import { LoginDto, RegistrationDto } from "@/types";
+import { FullUser, LoginDto, RegistrationDto, User } from "@/types";
 import { login, registration } from "@/api";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
@@ -25,7 +25,7 @@ const AuthPage = () => {
       const regResp = await registration(data);
       Cookies.set(COOKIES.TOKEN, regResp.token);
       router.push(PAGES.MAIN);
-      store.setUser(regResp.user);
+      store.setUser(regResp.user as FullUser);
     } catch (e) {
       console.log({ e });
     }
@@ -36,7 +36,7 @@ const AuthPage = () => {
       const loginResp = await login(data);
       Cookies.set(COOKIES.TOKEN, loginResp.token);
       router.push(PAGES.MAIN);
-      store.setUser(loginResp.user);
+      store.setUser(loginResp.user as FullUser);
     } catch (e) {
       console.log({ e });
     }

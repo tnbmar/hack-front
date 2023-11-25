@@ -7,22 +7,19 @@ import SubjectCard from "./Components/SubjectCard";
 
 const MOCK: Subject[] = [
   {
-    title: "Английский язык",
-    description: "Английский - это ключ к миру!",
+    name: "Английский язык",
     id: 1,
-    bgImage: "/subject-1.png",
+    // bgImage: "/subject-1.png",
   },
   {
-    title: "Программирование",
-    description: "Программирование - это код успеха!",
+    name: "Программирование",
     id: 2,
-    bgImage: "/subject-2.png",
+    // bgImage: "/subject-2.png",
   },
   {
-    title: "Экология",
-    description: "Познавай природу, береги ее!",
+    name: "Экология",
     id: 3,
-    bgImage: "/subject-3.png",
+    // bgImage: "/subject-3.png",
   },
 ];
 
