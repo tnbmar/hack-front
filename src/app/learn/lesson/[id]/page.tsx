@@ -12,27 +12,25 @@ import { getTasks } from "@/api";
 import { useParams } from "next/navigation";
 import { Task } from "@/types";
 
-const QUESTIONS_MOCK = [
-  { value: "console.log(1)", type: "code" },
-  { value: "Заполни конец", type: "lang" },
-  { value: "Заполни конец", type: "select" },
-];
-
 const LessonPage = () => {
   const params = useParams();
 
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(2);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const currentQuestion = useMemo(
-    () => QUESTIONS_MOCK[currentQuestionIndex],
-    [currentQuestionIndex]
+    () => tasks[currentQuestionIndex] ?? null,
+    [currentQuestionIndex, tasks]
   );
 
   useEffect(() => {
     const lessonId = params.id;
     getTasks(lessonId as string).then((data) => setTasks(data));
   }, []);
+
+  const handleSuccess = () => {
+    setCurrentQuestionIndex((i) => i + 1);
+  };
 
   return (
     <Flex style={{ height: "100%" }} direction={"column"} gap={"3"}>
@@ -43,18 +41,21 @@ const LessonPage = () => {
         />
       </Progress.Root>
 
-      {currentQuestion.type === "code" ? (
-        <CodeQuestion />
-      ) : currentQuestion.type === "lang" ? (
+      {currentQuestion && currentQuestion?.type === "CODE" ? (
+        <CodeQuestion codeString={currentQuestion.content} onSuccess={handleSuccess} />
+      ) : currentQuestion?.type === "DRAGABLE" ? (
         <WordDrop
-          string={currentQuestion.value}
-          correctWord="asd"
-          options={["фыв ф", "ыыыыы"]}
+          string={currentQuestion.content}
+          correctWord={"asd"}
+          options={currentQuestion.answers}
+          onSuccess={handleSuccess}
+          taskId={params.id as string}
         />
-      ) : currentQuestion.type === "select" ? (
+      ) : currentQuestion?.type === "DEFAULT" ? (
         <TrueAnswer
-          question="Сколько  сантиметров в дециметре?"
-          options={["asdasd", "asdasda", "asdasdasdasd"]}
+          question={currentQuestion.content}
+          options={currentQuestion.answers}
+          onSuccess={handleSuccess}
         />
       ) : (
         <></>

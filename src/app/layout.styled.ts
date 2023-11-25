@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 export const MainLayout = styled.main`
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  display: flex;
 `;
 
 export const Content = styled.div`
-  padding: 20px;
+  /* padding-left: 200px; */
+  width: 100%;
 `;

@@ -1,6 +1,5 @@
 "use client";
 
-import { Flex } from "@radix-ui/themes";
 import styled from "styled-components";
 
 export const AuthWrapper = styled.div`
@@ -22,7 +21,6 @@ export const AuthForm = styled.form`
   background-color: #fff;
   height: 100%;
   flex-grow: 1;
-  border-radius: 100px 0 0 100px;
   padding: 100px;
   display: flex;
   align-items: center;

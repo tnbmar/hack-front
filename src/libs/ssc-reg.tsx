@@ -4,7 +4,6 @@ import { PropsWithChildren, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import React from "react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import extraScopePlugin from "stylis-plugin-extra-scope";
 

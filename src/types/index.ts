@@ -13,6 +13,25 @@ export type User = {
   username: string;
 };
 
+export type Reward = {
+  id: 1;
+  name: "New";
+};
+
+export type FullUser = {
+  answeredLessons: Lesson[];
+  answeredModules: Module[];
+  answeredSubjects: Subject[];
+  answeredTasks: Task[];
+  createdAt: string;
+  email: string;
+  id: number;
+  password: string;
+  rewards: Reward[];
+  taskCount: number;
+  username: string;
+};
+
 export type RegResp = {
   token: string;
   user: User;
@@ -28,6 +47,7 @@ export type LoginResp = RegResp;
 export type Subject = {
   id: number;
   name: string;
+  image: string;
 };
 
 export type Module = {
@@ -54,29 +74,30 @@ export type Lesson = {
   // lesson_type: LessonType;
 };
 
-type Answer = {
-  content: string;
+export type Answer = {
   id: number;
-
+  content: string;
   is_true: true;
   task_id: number;
 };
+
+type TaskType = "CODE" | "DRAGABLE" | "DEFAULT";
 
 export type Task = {
   answered_id: null;
   answers: Answer[];
   content: string;
-  current_answer_id: number;
+  current_answer_id: null;
   id: number;
   lesson_id: number;
+  type: TaskType;
 };
+
 export type Achievment = {
   id: number;
-  title: string;
-  text: string;
-  status: boolean;
-  img: string;
+  name: string;
 };
+
 export type ProfileSubject = {
   tittle: string;
   id: number;
