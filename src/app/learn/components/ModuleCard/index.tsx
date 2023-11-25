@@ -49,7 +49,9 @@ const ModuleCard = ({ module }: { module: Module }) => {
         <Progress.Root className={s.progressbar} value={successValue / lessons.length}>
           <Progress.Indicator
             className={s.progressbar__indicator}
-            style={{ transform: `translateX(-${100 - successValue / lessons.length}%)` }}
+            style={{
+              transform: `translateX(-${(100 * successValue) / lessons.length}%)`,
+            }}
           />
         </Progress.Root>
 

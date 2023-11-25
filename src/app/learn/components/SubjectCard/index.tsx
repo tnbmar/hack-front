@@ -6,6 +6,7 @@ import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
+import { useUser } from "@/providers/AuthProvider";
 
 type Props = {
   subject: Subject;
@@ -14,9 +15,17 @@ type Props = {
 
 const SubjectCard = ({ subject, order }: Props) => {
   const router = useRouter();
+  const user = useUser();
 
   return (
-    <SubjectCardWrapper direction={"column"}>
+    <SubjectCardWrapper
+      direction={"column"}
+      style={{
+        opacity: user.user?.user.answeredSubjects.find((elem) => elem.id === subject.id)
+          ? 0.5
+          : 1,
+      }}
+    >
       <ImageContainer>
         <Image src={subject.image} alt={subject.name} fill />
       </ImageContainer>
