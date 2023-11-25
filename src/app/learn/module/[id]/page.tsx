@@ -17,7 +17,7 @@ const ModulePage = async ({ params }: Props) => {
   const { data: module } = await getModule(params.id, token?.value ?? "");
 
   return (
-    <Flex direction={"column"} gap={"3"}>
+    <Flex direction={"column"} gap={"3"} style={{ padding: 20 }}>
       <Flex align={"center"} gap={"2"}>
         <BackBtn />
         <Heading size={"7"}>{module.name}</Heading>

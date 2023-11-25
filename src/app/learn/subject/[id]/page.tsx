@@ -19,9 +19,11 @@ const Modules: NextPage<ModulesPageProps> = async (props) => {
   const { data } = await getModules(props.params.id, token?.value ?? "");
   const { data: subjectsData } = await getSubject(props.params.id, token?.value ?? "");
 
+  console.log({ subjectsData });
+
   return (
-    <Flex direction={"column"} gap={"3"}>
-      <Heading>{subjectsData.subject.name}</Heading>
+    <Flex direction={"column"} gap={"3"} style={{ padding: "20px" }}>
+      <Heading>{subjectsData.name}</Heading>
       <Flex direction={"column"} gap={"3"}>
         {data.map((module) => (
           <ModuleCard key={module.id} module={module} />

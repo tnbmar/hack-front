@@ -35,8 +35,7 @@ const ModuleCard = ({ module }: { module: Module }) => {
 
   const successValue = useMemo(() => {
     if (user) {
-      // console.log(appStore.user?.answeredLessons);
-      return user?.answeredLessons.length ?? 0;
+      return user?.user.answeredLessons.length ?? 0;
     } else {
       return 0;
     }
@@ -61,7 +60,7 @@ const ModuleCard = ({ module }: { module: Module }) => {
 
       <Flex align={"center"} gap={"3"}>
         <Button onClick={handleClick}>Продолжить</Button>
-        <Button>Материалы для изучения</Button>
+        {/* <Button>Материалы для изучения</Button> */}
       </Flex>
     </ModuleCardTemplate>
   );
