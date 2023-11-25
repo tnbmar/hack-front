@@ -5,8 +5,13 @@ import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 
-const CodeQuestion = () => {
-  const [value, setValue] = React.useState("console.log('hello world!');");
+type CodeQuestionProps = {
+  codeString: string;
+  onSuccess: () => void;
+};
+
+const CodeQuestion = ({ codeString, onSuccess }: CodeQuestionProps) => {
+  const [value, setValue] = React.useState(codeString);
 
   const onChange = React.useCallback((val: any, viewUpdate: any) => {
     console.log("val:", val);
@@ -17,6 +22,7 @@ const CodeQuestion = () => {
     try {
       eval(value);
       alert("Код скомпилирован");
+      onSuccess();
     } catch (e) {
       alert("Что то пошло не так, проверьте пожалуйста");
     }

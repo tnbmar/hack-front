@@ -13,6 +13,25 @@ export type User = {
   username: string;
 };
 
+export type Reward = {
+  id: 1;
+  name: "New";
+};
+
+export type FullUser = {
+  answeredLessons: Lesson[];
+  answeredModules: Module[];
+  answeredSubjects: Subject[];
+  answeredTasks: Task[];
+  createdAt: string;
+  email: string;
+  id: number;
+  password: string;
+  rewards: Reward[];
+  taskCount: number;
+  username: string;
+};
+
 export type RegResp = {
   token: string;
   user: User;
@@ -54,19 +73,21 @@ export type Lesson = {
   // lesson_type: LessonType;
 };
 
-type Answer = {
-  content: string;
+export type Answer = {
   id: number;
-
+  content: string;
   is_true: true;
   task_id: number;
 };
+
+type TaskType = "CODE" | "DRAGABLE" | "DEFAULT";
 
 export type Task = {
   answered_id: null;
   answers: Answer[];
   content: string;
-  current_answer_id: number;
+  current_answer_id: null;
   id: number;
   lesson_id: number;
+  type: TaskType;
 };

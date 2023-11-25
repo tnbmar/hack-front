@@ -1,18 +1,18 @@
-import { User } from "@/types";
+import { FullUser, User } from "@/types";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
 type AppStore = {
-  user: User | null;
+  user: FullUser | null;
 
-  setUser: (user: User) => void;
+  setUser: (user: FullUser) => void;
 };
 
 export const useAppStore = create<AppStore>()(
   devtools((set, get) => ({
     user: null,
 
-    setUser(user: User) {
+    setUser(user: FullUser) {
       set({ user: user });
     },
   }))

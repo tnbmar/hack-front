@@ -1,4 +1,4 @@
-import { LoginDto, LoginResp, RegResp, RegistrationDto } from "@/types";
+import { FullUser, LoginDto, LoginResp, RegResp, RegistrationDto } from "@/types";
 import httpClient from "../httpClient";
 
 export const registration = async (dto: RegistrationDto) => {
@@ -16,5 +16,10 @@ export const login = async (dto: LoginDto) => {
     data: dto,
     url: "/auth",
   });
+  return data;
+};
+
+export const getMyUser = async () => {
+  const { data } = await httpClient<FullUser>({ url: "/user/me", method: "GET" });
   return data;
 };
