@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
 import { useEffect, useState } from "react";
 import { getTasks } from "@/api";
+import { useUser } from "@/providers/AuthProvider";
 
 type LeassonCardProps = {
   lesson: Lesson;
@@ -21,6 +22,7 @@ const LeassonCard = ({ lesson, counter }: LeassonCardProps) => {
   };
 
   const [tasksLength, setTasksLength] = useState(0);
+  const { user } = useUser();
 
   useEffect(() => {
     lesson.id && getTasks(String(lesson.id)).then((data) => setTasksLength(data.length));
@@ -34,7 +36,11 @@ const LeassonCard = ({ lesson, counter }: LeassonCardProps) => {
         <Text size={"7"} weight={"bold"}>
           {lesson.name}
         </Text>
-        <Text>Ваш результат: 0/{tasksLength}</Text>
+        <Text>
+          Ваш результат:
+          {user?.user.answeredTasks.filter((elem) => elem.lesson_id === lesson.id).length}
+          /{tasksLength}
+        </Text>
       </TextWrapper>
     </LessonCard>
   );
