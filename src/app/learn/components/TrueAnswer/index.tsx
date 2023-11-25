@@ -32,7 +32,6 @@ const TrueAnswer = ({ options, question, onSuccess }: Props) => {
 
   return (
     <Flex direction={"column"}>
-      <Text>Выбери правильный ответ</Text>
       <Text>{question}</Text>
       <Flex direction={"column"} gap={"2"}>
         {options.map((option, i) => (

@@ -33,14 +33,16 @@ const LessonPage = () => {
   }, []);
 
   const handleSuccess = () => {
+    // setSuccessTask((i) => i + 1);
     setCurrentQuestionIndex((i) => i + 1);
-    setSuccessTask((i) => i + 1);
   };
 
   return (
     <Flex style={{ height: "100%", padding: 20 }} direction={"column"} gap={"3"}>
       <Flex align={"center"} gap={"2"}>
-        <Text>Задача {currentQuestionIndex + 1}</Text>
+        {currentQuestionIndex < tasks.length && (
+          <Text>Задача {currentQuestionIndex + 1}</Text>
+        )}
       </Flex>
 
       {currentQuestion && currentQuestion?.type === "CODE" ? (

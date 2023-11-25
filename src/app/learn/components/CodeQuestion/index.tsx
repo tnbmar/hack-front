@@ -15,7 +15,6 @@ const CodeQuestion = ({ codeString, onSuccess }: CodeQuestionProps) => {
   const [value, setValue] = React.useState(codeString);
 
   const onChange = React.useCallback((val: any, viewUpdate: any) => {
-    console.log("val:", val);
     setValue(val);
   }, []);
 

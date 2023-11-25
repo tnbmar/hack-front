@@ -8,5 +8,4 @@ export const getTasks = async (lessonId: string) => {
 
 export const checkAnswer = async (dto: { task_id: number; answer_id: number }) => {
   const response = await httpClient({ url: "/check-answer", method: "POST", data: dto });
-  console.log({ response });
 };
