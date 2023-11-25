@@ -1,13 +1,13 @@
 "use client";
 
-import { Subject } from "@/types";
+import { ProfileSubject, Subject } from "@/types";
 import {
   ImageContainer,
   InfoWrapper,
   StyledButton,
   SubjectCardWrapper,
 } from "./SubjectCard.styled";
-import { Button, Flex, Heading, Text } from "@radix-ui/themes";
+import { Heading } from "@radix-ui/themes";
 import Image from "next/image";
 import * as Progress from "@radix-ui/react-progress";
 import s from "./progres.module.css";
@@ -26,10 +26,10 @@ const SubjectCard = ({ subject }: Props) => {
   return (
     <SubjectCardWrapper direction={"row"}>
       <ImageContainer>
-        {/* <Image src={subject.bgImage} alt={subject.title} fill /> */}
+        <Image src={subject.image} alt={subject.name} fill />
       </ImageContainer>
       <InfoWrapper>
-        <Heading>англ</Heading>
+        <Heading>{subject.name}</Heading>
         <Progress.Root className={s.progressbar} value={progress}>
           <Progress.Indicator
             className={s.progressbar__indicator}
