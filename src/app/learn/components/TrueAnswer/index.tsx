@@ -36,7 +36,14 @@ const TrueAnswer = ({ options, question, onSuccess }: Props) => {
       <Text>{question}</Text>
       <Flex direction={"column"} gap={"2"}>
         {options.map((option, i) => (
-          <Text key={i} onClick={() => setSelectedAnswer(option.id)}>
+          <Text
+            key={i}
+            onClick={() => setSelectedAnswer(option.id)}
+            style={{
+              color: selectedAnswer === option.id ? "green" : "gray",
+              cursor: "pointer",
+            }}
+          >
             {i + 1} {option.content}
           </Text>
         ))}
