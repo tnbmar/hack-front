@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { getAchievments, getSubjects } from "@/api";
 import { useUser } from "@/providers/AuthProvider";
 import SubjectAchievment from "./Components/SubjectAchievment";
+import dayjs from "dayjs";
 
 type Props = {
   params: {
@@ -42,8 +43,8 @@ const ProfilePage: NextPage<Props> = ({ params }) => {
     <Container>
       <div>
         <ProfileBlock>
-          <AuthTittle>Привет, {user.username}! </AuthTittle>
-          <Text>Регистрация: {user.createdAt}</Text>
+          <AuthTittle>Привет, {user.user.username}! </AuthTittle>
+          <Text>Регистрация: {dayjs(user.user.createdAt).format("DD.MM.YYYY")}</Text>
         </ProfileBlock>
         <ModuleBLock>
           <AuthTittle>Мои предметы</AuthTittle>
