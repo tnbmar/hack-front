@@ -10,6 +10,7 @@ export const ProfileBLock = styled.div`
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
   margin-bottom: 40px;
 `;
+
 export const ModuleBLock = styled.div`
   width: 882px;
   display: inline-flex;
@@ -22,6 +23,7 @@ export const ModuleBLock = styled.div`
   background: var(--white-background, #fff);
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
 `;
+
 export const AchievementBlock = styled.div`
   border-radius: 30px;
   background: var(--white-background, #fff);
