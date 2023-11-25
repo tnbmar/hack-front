@@ -1,19 +1,29 @@
-import { Flex, Grid, Heading, Text } from "@radix-ui/themes";
+"use client";
+
+import { Text } from "@radix-ui/themes";
 import { NextPage } from "next";
 import Image from "next/image";
 import { Achievment, ProfileSubject, Subject } from "@/types";
+
 import {
   AchievementBlock,
   AuthTittle,
   Container,
   ModuleBLock,
   ProfileBlock,
+<<<<<<< HEAD
   ProfileBlockAvatar,
   ProfileContainer,
   SubjectsWrapper,
+=======
+>>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
 } from "./auth.styled";
 import SubjectCard from "./Components/SubjectCard";
+import { useEffect, useState } from "react";
+import { getAchievments, getSubjects } from "@/api";
+import { useUser } from "@/providers/AuthProvider";
 import SubjectAchievment from "./Components/SubjectAchievment";
+<<<<<<< HEAD
 import { SubTitle } from "./Components/SubjectAchievment/SubjectAvhievment.styled";
 
 const MOCK: ProfileSubject[] = [
@@ -70,6 +80,9 @@ const ACHIEVE: Achievment[] = [
     img: "/Achieve-5.png",
   },
 ];
+=======
+import dayjs from "dayjs";
+>>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
 
 type Props = {
   params: {
@@ -80,9 +93,21 @@ type Props = {
 const ProfilePage: NextPage<Props> = ({ params }) => {
   const profileId = params.id;
 
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [rewards, setRewards] = useState<Achievment[]>([]);
+  const { user } = useUser();
+
+  useEffect(() => {
+    getSubjects().then(({ data }) => setSubjects(data.results));
+    getAchievments().then(({ data }) => setRewards(data.results));
+  }, []);
+
+  if (!user) return null;
+
   return (
     <Container>
       <div>
+<<<<<<< HEAD
         <ProfileContainer>
           <ProfileBlockAvatar>
             <Image src="/Avatar.png" alt="user" width={200} height={200} style={{ borderRadius: "50%", margin: "" }} />
@@ -104,6 +129,21 @@ const ProfilePage: NextPage<Props> = ({ params }) => {
       <AchievementBlock>
         <AuthTittle style={{ textAlign: "center" }}> Мои достижения</AuthTittle>
         {ACHIEVE.map((achieve) => (
+=======
+        <ProfileBlock>
+          <AuthTittle>Привет, {user.user.username}! </AuthTittle>
+          <Text>Регистрация: {dayjs(user.user.createdAt).format("DD.MM.YYYY")}</Text>
+        </ProfileBlock>
+        <ModuleBLock>
+          <AuthTittle>Мои предметы</AuthTittle>
+          {subjects &&
+            subjects.map((subject) => <SubjectCard subject={subject} key={subject.id} />)}
+        </ModuleBLock>
+      </div>
+      <AchievementBlock>
+        <AuthTittle> Мои достижения</AuthTittle>
+        {rewards.map((achieve) => (
+>>>>>>> 1ee589bf42afed039522902feca6a0018edb4170
           <SubjectAchievment subject={achieve} key={achieve.id} />
         ))}
       </AchievementBlock>

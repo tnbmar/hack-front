@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const NavBar = () => {
   const pathname = usePathname();
 
-  // if (pathname === "/auth") return null;
+  if (pathname === "/auth") return null;
 
   return (
     <NavLayout>

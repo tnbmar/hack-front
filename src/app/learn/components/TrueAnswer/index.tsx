@@ -1,24 +1,47 @@
 "use client";
 
+import { checkAnswer } from "@/api";
+import { Answer } from "@/types";
 import { Button, Flex, Text } from "@radix-ui/themes";
+import { useState } from "react";
 
 type Props = {
-  options: string[];
+  options: Answer[];
   question: string;
+  onSuccess: () => void;
 };
 
-const TrueAnswer = ({ options, question }: Props) => {
+const TrueAnswer = ({ options, question, onSuccess }: Props) => {
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+
+  const handleSubmit = async () => {
+    try {
+      const taskId = options.find((option) => option.id === selectedAnswer)?.task_id;
+      if (!selectedAnswer || !taskId) return;
+
+      await checkAnswer({
+        answer_id: selectedAnswer,
+        task_id: taskId,
+      });
+
+      onSuccess();
+    } catch {
+      console.log("error");
+    }
+  };
+
   return (
     <Flex direction={"column"}>
       <Text>Выбери правильный ответ</Text>
       <Text>{question}</Text>
       <Flex direction={"column"} gap={"2"}>
         {options.map((option, i) => (
-          <Button key={i}>
-            {i + 1} {option}
-          </Button>
+          <Text key={i} onClick={() => setSelectedAnswer(option.id)}>
+            {i + 1} {option.content}
+          </Text>
         ))}
       </Flex>
+      <Button onClick={handleSubmit}>Продолжить</Button>
     </Flex>
   );
 };

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Content, MainLayout } from "./layout.styled";
 import { Theme } from "@radix-ui/themes";
 import NavBar from "@/components/NavBar";
+import AuthProvider from "@/providers/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +21,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobalStyle />
 
         <body className={inter.className}>
-          <Theme key={"asdasd"}>
-            <MainLayout>
-              <NavBar />
+          <AuthProvider>
+            <Theme key={"asdasd"}>
+              <MainLayout>
+                <NavBar />
 
-              <Content>{children}</Content>
-            </MainLayout>
-          </Theme>
+                <Content>{children}</Content>
+              </MainLayout>
+            </Theme>
+          </AuthProvider>
         </body>
       </StyledComponentsRegistry>
     </html>

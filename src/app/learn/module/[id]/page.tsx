@@ -1,9 +1,9 @@
 import { getLessons, getModule } from "@/api";
 import LeassonCard from "../../components/LessonCard";
-import { Lesson } from "@/types";
 import { Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import { cookies } from "next/headers";
 import COOKIES from "@/constants/cookie";
+import BackBtn from "@/components/BackBtn";
 
 type Props = {
   params: { id: number };
@@ -16,13 +16,11 @@ const ModulePage = async ({ params }: Props) => {
   const { data } = await getLessons(params.id, token?.value ?? "");
   const { data: module } = await getModule(params.id, token?.value ?? "");
 
-  console.log({ module });
-
   return (
     <Flex direction={"column"} gap={"3"}>
       <Flex align={"center"} gap={"2"}>
-        <Text>Назад</Text>
-        <Heading size={"7"}>Английский - это ключ к миру!</Heading>
+        <BackBtn />
+        <Heading size={"7"}>{module.name}</Heading>
       </Flex>
 
       <Grid columns={"3"} gap={"3"}>
