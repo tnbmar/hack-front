@@ -1,0 +1,16 @@
+name: "Push: main"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  deploy_back:
+    runs-on:
+      - front-hack
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: Deploy dev
+        run: docker-compose up -d --build
