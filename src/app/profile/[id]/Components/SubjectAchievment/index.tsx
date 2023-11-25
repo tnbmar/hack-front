@@ -17,7 +17,7 @@ const SubjectAchievment = ({ subject }: Props) => {
     <>
       <AchieveContainer>
         <AchieveBlock>
-          <AchieveImageBLock>
+          <AchieveImageBLock status={subject.status}>
             <Image src={subject.img} alt={subject.title} fill />
           </AchieveImageBLock>
           <div>
