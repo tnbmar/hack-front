@@ -2,17 +2,31 @@
 
 import styled from "styled-components";
 
-export const ProfileBLock = styled.div`
-  width: 882px;
+export const ProfileContainer = styled.div`
+  width: 100%;
   height: 285px;
   border-radius: 30px;
   background: var(--white-background, #fff);
   /* shadow sidebar */
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
   margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+`;
+export const ProfileBlockAvatar = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const ProfileBlock = styled.div`
+  margin-bottom: 100px;
 `;
 export const ModuleBLock = styled.div`
-  width: 882px;
+  width: 100%;
   display: inline-flex;
   padding: 47px 48px 50px 42px;
   flex-direction: column;
@@ -29,7 +43,7 @@ export const AchievementBlock = styled.div`
   background: var(--white-background, #fff);
   /* shadow sidebar */
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
-  width: 500px;
+  width: 100%;
 `;
 export const Container = styled.div`
   display: grid;
@@ -43,5 +57,4 @@ export const AuthTittle = styled.h1`
   font-weight: 600;
   line-height: 33.75px;
   padding-top: 20px;
-  text-align: center;
 `;

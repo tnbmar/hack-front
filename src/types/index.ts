@@ -70,3 +70,15 @@ export type Task = {
   id: number;
   lesson_id: number;
 };
+export type Achievment = {
+  id: number;
+  title: string;
+  text: string;
+  status: boolean;
+  img: string;
+};
+export type ProfileSubject = {
+  tittle: string;
+  id: number;
+  bgImage: string;
+};
