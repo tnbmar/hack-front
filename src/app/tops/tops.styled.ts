@@ -10,7 +10,7 @@ export const ProfileContainer = styled.div`
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
   margin-bottom: 40px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   align-items: center;
   justify-content: center;
 `;
@@ -124,7 +124,7 @@ export const AchievementBlock = styled.div`
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 30px;
   padding: 20px;
 `;
@@ -135,4 +135,49 @@ export const AuthTittle = styled.h1`
   font-weight: 600;
   line-height: 33.75px;
   padding-top: 20px;
+`;
+
+export const LTable = styled.table`
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+`;
+
+export const Lth = styled.th`
+  text-align: center;
+  font-size: 21px;
+  color: #b8b8b8;
+
+  &:nth-child(1) {
+    text-align: left;
+  }
+
+  &:nth-child(3) {
+    text-align: right;
+  }
+`;
+
+export const Ltd = styled.td`
+  text-align: center;
+  font-size: 27px;
+  color: #000;
+  font-weight: 600;
+
+  &:nth-child(2) {
+    width: 100px;
+  }
+
+  &:nth-child(1) {
+    text-align: left;
+  }
+
+  &:nth-child(3) {
+    text-align: right;
+  }
+`;
+
+export const LtdContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
