@@ -28,7 +28,7 @@ export const ProfileBlock = styled.div`
 export const ModuleBLock = styled.div`
   width: 100%;
   display: inline-flex;
-  padding: 47px 48px 50px 42px;
+  padding: 10px 48px 50px 42px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -38,6 +38,71 @@ export const ModuleBLock = styled.div`
   /* shadow sidebar */
   box-shadow: 6px 0px 30px 0px rgba(126, 138, 149, 0.2);
 `;
+
+export const SubjectsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  & > div > div {
+    color: #f72585;
+  }
+  & > div:first-child > div {
+    color: #f72585;
+  }
+
+  & > div:nth-child(2) > div {
+    color: #7209b7;
+  }
+
+  & > div:nth-child(3) > div {
+    color: #399b08;
+  }
+  & > div > div > div {
+    background: #ffdae9;
+  }
+  & > div:first-child > div > div {
+    background: #ffdae9;
+  }
+
+  & > div:nth-child(2) > div > div {
+    background: #efdaff;
+  }
+
+  & > div:nth-child(3) > div > div {
+    background: #efffef;
+  }
+  & > div > div > div > div {
+    background: #f72585;
+  }
+
+  & > div:first-child > div > div > div {
+    background: #f72585;
+  }
+
+  & > div:nth-child(2) > div > div > div {
+    background: #7209b7;
+  }
+
+  & > div:nth-child(3) > div > div > div {
+    background: #399b08;
+  }
+  & > div > div > button {
+    background: #f72585;
+  }
+  & > div:first-child > div > button {
+    background: #f72585;
+  }
+
+  & > div:nth-child(2) > div > button {
+    background: #7209b7;
+  }
+
+  & > div:nth-child(3) > div > button {
+    background: #399b08;
+  }
+`;
+
 export const AchievementBlock = styled.div`
   border-radius: 30px;
   background: var(--white-background, #fff);

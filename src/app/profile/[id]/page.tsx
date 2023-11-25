@@ -10,9 +10,11 @@ import {
   ProfileBlock,
   ProfileBlockAvatar,
   ProfileContainer,
+  SubjectsWrapper,
 } from "./auth.styled";
 import SubjectCard from "./Components/SubjectCard";
 import SubjectAchievment from "./Components/SubjectAchievment";
+import { SubTitle } from "./Components/SubjectAchievment/SubjectAvhievment.styled";
 
 const MOCK: ProfileSubject[] = [
   {
@@ -50,21 +52,21 @@ const ACHIEVE: Achievment[] = [
     id: 3,
     title: "Вы фотомодель!",
     text: "Добавьте свое фото в профиль",
-    status: true,
+    status: false,
     img: "/Achieve-3.png",
   },
   {
     id: 4,
     title: "Самый умный!",
     text: "Ответьте на 15 вопросов",
-    status: true,
+    status: false,
     img: "/Achieve-4.png",
   },
   {
     id: 5,
     title: "Король знаний",
     text: "Закончите изучение одного предмета",
-    status: true,
+    status: false,
     img: "/Achieve-5.png",
   },
 ];
@@ -87,18 +89,20 @@ const ProfilePage: NextPage<Props> = ({ params }) => {
           </ProfileBlockAvatar>
           <ProfileBlock>
             <AuthTittle>Привет, {profileId}! </AuthTittle>
-            <Text>Регистрация: {profileId}</Text>
+            <SubTitle>Регистрация: {profileId}</SubTitle>
           </ProfileBlock>
         </ProfileContainer>
         <ModuleBLock>
           <AuthTittle>Мои предметы</AuthTittle>
-          {MOCK.map((subject) => (
-            <SubjectCard subject={subject} key={subject.id} />
-          ))}
+          <SubjectsWrapper>
+            {MOCK.map((subject) => (
+              <SubjectCard subject={subject} key={subject.id} />
+            ))}
+          </SubjectsWrapper>
         </ModuleBLock>
       </div>
       <AchievementBlock>
-        <AuthTittle> Мои достижения</AuthTittle>
+        <AuthTittle style={{ textAlign: "center" }}> Мои достижения</AuthTittle>
         {ACHIEVE.map((achieve) => (
           <SubjectAchievment subject={achieve} key={achieve.id} />
         ))}

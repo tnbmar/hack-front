@@ -9,6 +9,9 @@ export const SubjectCardWrapper = styled(Flex)`
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
+  & > div:first-child {
+    background-color: red;
+  }
 `;
 
 export const ImageContainer = styled.div`
