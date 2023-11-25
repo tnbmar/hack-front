@@ -6,17 +6,21 @@ import { useEffect, useMemo, useState } from "react";
 
 import s from "./lesson.module.css";
 import WordDrop from "../../components/LanguageQuestion";
-import { Flex } from "@radix-ui/themes";
+import { Flex, Text } from "@radix-ui/themes";
 import TrueAnswer from "../../components/TrueAnswer";
 import { getTasks } from "@/api";
 import { useParams } from "next/navigation";
 import { Task } from "@/types";
+import { useUser } from "@/providers/AuthProvider";
 
 const LessonPage = () => {
   const params = useParams();
 
   const [tasks, setTasks] = useState<Task[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [successTask, setSuccessTask] = useState(0);
+
+  const { user } = useUser();
 
   const currentQuestion = useMemo(
     () => tasks[currentQuestionIndex] ?? null,
@@ -30,19 +34,21 @@ const LessonPage = () => {
 
   const handleSuccess = () => {
     setCurrentQuestionIndex((i) => i + 1);
+    setSuccessTask((i) => i + 1);
   };
 
   return (
-    <Flex style={{ height: "100%" }} direction={"column"} gap={"3"}>
-      <Progress.Root className={s.progressbar} value={10}>
-        <Progress.Indicator
-          className={s.progressbar__indicator}
-          style={{ transform: `translateX(-${100 - 10}%)` }}
-        />
-      </Progress.Root>
+    <Flex style={{ height: "100%", padding: 20 }} direction={"column"} gap={"3"}>
+      <Flex align={"center"} gap={"2"}>
+        <Text>Задача {currentQuestionIndex + 1}</Text>
+      </Flex>
 
       {currentQuestion && currentQuestion?.type === "CODE" ? (
-        <CodeQuestion codeString={currentQuestion.content} onSuccess={handleSuccess} />
+        <CodeQuestion
+          codeString={currentQuestion.content}
+          key={currentQuestion.content}
+          onSuccess={handleSuccess}
+        />
       ) : currentQuestion?.type === "DRAGABLE" ? (
         <WordDrop
           string={currentQuestion.content}
@@ -57,6 +63,8 @@ const LessonPage = () => {
           options={currentQuestion.answers}
           onSuccess={handleSuccess}
         />
+      ) : currentQuestionIndex >= tasks.length ? (
+        <>Вы прошли все задачи урока</>
       ) : (
         <></>
       )}

@@ -4,6 +4,7 @@ import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { Button, Flex, Heading } from "@radix-ui/themes";
+import { checkAnswer } from "@/api";
 
 type CodeQuestionProps = {
   codeString: string;
@@ -22,6 +23,7 @@ const CodeQuestion = ({ codeString, onSuccess }: CodeQuestionProps) => {
     try {
       eval(value);
       alert("Код скомпилирован");
+      checkAnswer({ answer_id: 1, task_id: 2 });
       onSuccess();
     } catch (e) {
       alert("Что то пошло не так, проверьте пожалуйста");
