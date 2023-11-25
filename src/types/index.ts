@@ -19,17 +19,19 @@ export type Reward = {
 };
 
 export type FullUser = {
-  answeredLessons: Lesson[];
-  answeredModules: Module[];
-  answeredSubjects: Subject[];
-  answeredTasks: Task[];
-  createdAt: string;
-  email: string;
-  id: number;
-  password: string;
-  rewards: Reward[];
-  taskCount: number;
-  username: string;
+  user: {
+    answeredLessons: Lesson[];
+    answeredModules: Module[];
+    answeredSubjects: Subject[];
+    answeredTasks: Task[];
+    createdAt: string;
+    email: string;
+    id: number;
+    password: string;
+    rewards: Reward[];
+    taskCount: number;
+    username: string;
+  };
 };
 
 export type RegResp = {
