@@ -16,6 +16,7 @@ export const SubjectCardWrapper = styled(Flex)`
 
 export const ImageContainer = styled.div`
   /* height: 100%; */
+  position: relative;
 
   & > img {
     object-fit: cover;
