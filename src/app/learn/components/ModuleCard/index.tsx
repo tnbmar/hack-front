@@ -10,7 +10,7 @@ import s from "./progres.module.css";
 import { useRouter } from "next/navigation";
 import PAGES from "@/constants/pages";
 import { getLessons } from "@/api";
-import { useAppStore } from "@/store";
+import { useUser } from "@/providers/AuthProvider";
 
 const ModuleCard = ({ module }: { module: Module }) => {
   const [progress, setProgress] = React.useState(13);
@@ -22,7 +22,7 @@ const ModuleCard = ({ module }: { module: Module }) => {
 
   const router = useRouter();
 
-  const appStore = useAppStore();
+  const { user } = useUser();
 
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
@@ -34,14 +34,13 @@ const ModuleCard = ({ module }: { module: Module }) => {
   };
 
   const successValue = useMemo(() => {
-    if (appStore.user) {
+    if (user) {
       // console.log(appStore.user?.answeredLessons);
-      // return appStore.user?.answeredLessons.length ?? 0;
-      return 0;
+      return user?.answeredLessons.length ?? 0;
     } else {
       return 0;
     }
-  }, [appStore.user, module.id]);
+  }, [user]);
 
   return (
     <ModuleCardTemplate direction={"column"} gap={"3"}>
